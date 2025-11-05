@@ -14,7 +14,19 @@ def extract_data(raw_data):
     s_names = []
     s_grades = []
 
-    # ADD YOUR CODE HERE
+    for i in raw_data:
+        f_name = i.split()
+        for i in f_name:
+            f_name = i[10:11].upper() + i[11:]
+            for n in len(f_name):
+                f_name = f_name[n]
+        l_name = i.split()
+        for i in l_name:
+            l_name = i[:1].upper() + i[1:]
+            print(l_name)
+        s_names = []
+    print(f_name)
+    
 
     return s_names, s_grades
 
