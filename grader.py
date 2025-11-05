@@ -13,19 +13,6 @@ def extract_data(raw_data):
     """
     s_names = []
     s_grades = []
-
-    for i in raw_data:
-        f_name = i.split()
-        for i in f_name:
-            f_name = i[10:11].upper() + i[11:]
-            for n in len(f_name):
-                f_name = f_name[n]
-        l_name = i.split()
-        for i in l_name:
-            l_name = i[:1].upper() + i[1:]
-            print(l_name)
-        s_names = []
-    print(f_name)
     
 
     return s_names, s_grades
@@ -37,7 +24,13 @@ def curve_grades(grades, by_amount):
     Use a ``while`` loop for iteration to earn full credit (a ``for`` loop works but loses style credit).
     Return the list containing the curved grades (same list if modified, otherwise new).
     """
-    # ADD YOUR CODE HERE
+    updated_grades = []
+    for i in grades:
+        i = i + by_amount
+        if i > 100:
+            i = 100
+        updated_grades = updated_grades + [i]
+    return updated_grades
 
 
 def print_top_performers(names, grades):
@@ -50,7 +43,11 @@ def print_top_performers(names, grades):
     Output one line per qualifying record, no extra spaces or blank lines.
     Returns: None
     """
-    # ADD YOUR CODE HERE
+    n = 0
+    for i in grades:
+        if i >= 95:
+            print(f"{names[n]}: {grades[n]}")
+        n = n + 1
 
 
 def main():
@@ -78,8 +75,8 @@ def main():
 
     # If you were unable to correctly extract the names and grades from roster_records,
     # uncomment the lists below so you can use the formatted data in the next function
-    # names = ["Ana Lopez", "Priya Singh", "Max Jones", "Li Chen", "Zoe Brown", "Nico Garcia", "Minh Nguyen", "Carla Perez", "Noel Davis", "Hana Kim", "Ravi Patel", "Jade Morgan", "Eli Smith", "Aria Reed", "Theo Allen"]
-    # grades = [78, 97, 85, 88, 73, 81, 90, 84, 76, 96, 69, 87, 82, 91, 77]
+    names = ["Ana Lopez", "Priya Singh", "Max Jones", "Li Chen", "Zoe Brown", "Nico Garcia", "Minh Nguyen", "Carla Perez", "Noel Davis", "Hana Kim", "Ravi Patel", "Jade Morgan", "Eli Smith", "Aria Reed", "Theo Allen"]
+    grades = [78, 97, 85, 88, 73, 81, 90, 84, 76, 96, 69, 87, 82, 91, 77]
 
     updated_grades = curve_grades(grades, 5)
     
